@@ -27,3 +27,28 @@ blockchain = [
 # Anthony's KelloggCoin balance is 2650
 
 # 👇👇👇 Your code HERE 👇👇👇
+
+wallets = {
+  "ben" => 0,
+  "brian" => 0,
+  "evan" => 0,
+  "anthony" => 0
+}
+
+i = 0
+while i < blockchain.length
+  from_user = blockchain[i]["from_user"]
+  to_user = blockchain[i]["to_user"]
+  amount = blockchain[i]["amount"]
+
+  if from_user != nil
+    wallets[from_user] = wallets[from_user] - amount
+  end
+  wallets[to_user] = wallets[to_user] + amount
+
+  i = i + 1
+end
+
+wallets.each do |name, amount|
+  puts "#{name.capitalize}'s KelloggCoin balance is #{amount}"
+end
